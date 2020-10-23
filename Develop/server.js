@@ -31,6 +31,25 @@ fs.readFile("db/db.json","utf8", (err, data) => {
         res.sendFile(path.join(directory, "index.html"))
     })
 
+    app.post("/api/notes", function(req, res){
+        let newNote = req.body
+        let id = (info.length).toString()
+        newNote.id = id
+        info.push(newNote)
+        fs.writeFileSync("db/db.json",JSON.stringify(info))
+        res.json(info)
+        
+        
+    })
+
+    app.delete("/api/notes/:id", function(req, res){
+        info.splice(req.params.id, 1)
+        fs.writeFileSync("db/db.json",JSON.stringify(info))
+        res.json(info)
+      
+        
+
+    })
 
 
 
