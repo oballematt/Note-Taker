@@ -53,7 +53,8 @@ fs.readFile("db/db.json","utf8", (err, data) => {
 
 
 
-
-
-
 })
+
+app.listen(PORT, function() {
+    console.log("App listening on PORT: " + PORT);
+});  
